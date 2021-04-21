@@ -1,24 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Container, Grid } from '@material-ui/core';
 import './App.css';
+import Home from './components/home';
+import Detail from './components/detail';
+import Toolbar from './components/toolbar';
+
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Toolbar />
+      <Container maxWidth="md">
+        <Grid
+          style={{ minHeight: "100vh", margin: 'auto', height: "100%" }}
+          container
+          alignItems="center"
+          direction="row"
+          justify="center">
+          <Grid item style={{ marginTop: "5%" }}>
+            <Router>
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/detail" component={Detail} />
+              </Switch>
+            </Router>
+          </Grid>
+        </Grid>
+      </Container>
     </div>
   );
 }
